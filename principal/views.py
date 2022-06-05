@@ -15,7 +15,7 @@ from django.core.paginator import Paginator
 ##################### Sistema do FAQ ##############################
 
 # - Pagina Home - #
-
+@login_required
 def telahome(request):
     cursos_m = Curso.objects.all()
 
@@ -24,7 +24,7 @@ def telahome(request):
         'n_curso': cursos_m,
     }  
     return render(request, 'principals/telahome.html', context)
-
+@login_required
 def listarConteudo(request, conteudo_id):
 
     viewConteudo = get_object_or_404(Curso, pk=conteudo_id)
@@ -37,6 +37,7 @@ def listarConteudo(request, conteudo_id):
     return render(request, 'principals/curso.html', context)
 
 #Listar Material
+@login_required
 def listarMaterial(request, id):
     conteudo = Conteudo.objects.get(pk=id)
     material = Material.objects.all()
@@ -47,6 +48,7 @@ def listarMaterial(request, id):
     }
     return render(request, 'principals/listarMaterial.html', context)
 ########################################## F A Q ###############################################
+@login_required
 def Pergunta(request):
     search = request.GET.get('search')
     filter = request.GET.get('filter')
@@ -61,7 +63,7 @@ def Pergunta(request):
         page = request.GET.get('page')
         perguntas = paginator.get_page(page)
     return render(request, 'principals/perguntas.html', {'perguntas': perguntas})
-
+@login_required
 def detailPerguntas(request, id):
     detalhePergunta = get_object_or_404(Perguntas, pk=id)
     return render(request, 'principals/DetalhePerguntas.html', {'detalheP': detalhePergunta})
@@ -126,7 +128,7 @@ def detailPerguntas(request, id):
 
 
 ############################### - Topico - ###########################################
-
+@login_required
 def PaginaTopicos(request):
     search = request.GET.get('search')
     Topico.objects.filter(titulo__icontains ="0").delete()
@@ -144,7 +146,7 @@ def PaginaTopicos(request):
         comenta = paginator.get_page(page)
  
     return render(request, 'principals/topicos.html', {'comenta': comenta})
-
+@login_required
 def viewTopico(request, id_topico):
     viewTopico = get_object_or_404(Topico, pk=id_topico)
     Resposta.objects.filter(resposta__icontains ="0").delete()
@@ -155,7 +157,7 @@ def viewTopico(request, id_topico):
         'resposta': resposta,
     }
     return render(request, 'principals/viewRespostas.html', context)
- 
+@login_required
 def novoTopico(request):
     if request.method == 'POST':
         form = Topicos(request.POST)
@@ -173,6 +175,7 @@ def novoTopico(request):
 #-#-#-#-#-#-#-#-#- Meus Tópicos #-#-#-#-#-#-#-#-
 
 #Listar Topicos do usuário logado
+@login_required
 def meusTopicos(request):
     search = request.GET.get('search')
     Topico.objects.filter(titulo__icontains ="0").delete()
@@ -192,6 +195,7 @@ def meusTopicos(request):
     return render(request, 'principals/meusTopicos.html', {'topico': topico})
 
 #Editar Tópico
+@login_required
 def editTopico(request, id_topico):
     topico = get_object_or_404(Topico, pk=id_topico)
     form = Topicos(instance=topico)
@@ -209,6 +213,7 @@ def editTopico(request, id_topico):
         return render(request, 'principals/edit-Topico.html', {'form':form, 'topico':topico})
 
 #Deletar Topico
+@login_required
 def deletarTopico(request, id_topico):
     topico = get_object_or_404(Topico, pk=id_topico)
     topico.delete()
@@ -222,7 +227,7 @@ def deletarTopico(request, id_topico):
 
 
 
-
+@login_required
 def deletarComentario(request, id):
     comenta = get_object_or_404(Topico, pk=id)
     comenta.delete()
@@ -237,6 +242,7 @@ def deletarComentario(request, id):
 
 
 #view que add um comentário ao tópico
+@login_required
 def addResposta(request, id):
 
     topico = Topico.objects.get(id=id)
@@ -252,7 +258,7 @@ def addResposta(request, id):
     else: 
         form = Respostas()
         return render(request, 'principals/add_Resposta.html', {'form': form, 'topico':topico})
-
+@login_required
 def minhasRespostas(request):
     Resposta.objects.filter(resposta__icontains ="0").delete()
     resposta_list = Resposta.objects.filter(user=request.user)
@@ -263,7 +269,7 @@ def minhasRespostas(request):
     resposta = paginator.get_page(page)
  
     return render(request, 'principals/minhasRespostas.html', {'resposta': resposta})
-
+@login_required
 def editResposta(request, id_resposta):
     resposta = get_object_or_404(Resposta, pk=id_resposta)
     form = Respostas(instance=resposta)
@@ -279,7 +285,7 @@ def editResposta(request, id_resposta):
  
     else:
         return render(request, 'principals/edit-Topico.html', {'form':form, 'resposta':resposta})
-
+@login_required
 def deletarResposta(request, id_resposta):
     topico = get_object_or_404(Resposta, pk=id_resposta)
     topico.delete()
