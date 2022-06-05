@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Topicos{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="row" style="margin-left: 18%; margin-top: 3%">
+    <div class="col-12">
+        <div class="row">
+            <div class="card col-md-6 col-lg-9">
+                {% for material in conteudo.material_set.all%}
+                <h3 class="card-header">Material de {{conteudo.nome_conteudo}}</h3>
+                <div class="card-body">
+                  <h5 class="card-title">{{material.titulo_introducao}}</h5>
+                  <p class="card-text">{{material.introducao}}</p>
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{material.primeiro_passo_titulo}}</h5>
+                    <p class="card-text">{{material.primeiro_passo}}</p>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word1.png' %}" alt=""><br>
+                    <p class="card-text">{{material.segundo_passo}}</p>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word2.png' %}" alt=""><br>
+                    <p class="card-text">{{material.terceira_passo}}</p><br>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word3.png' %}" alt=""><br>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word4.png' %}" alt=""><br>
+                    <p class="card-text">{{material.quarto_passo}}</p>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word5.png' %}" alt=""><br>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word6.png' %}" alt=""><br>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word7.png' %}" alt=""><br>
+                    <h5 class="card-title">{{material.quinto_passo}}</h5>
+                    <p class="card-text">{{material.sexto_passo}}</p>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word8.png' %}" alt=""><br>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word9.png' %}" alt=""><br>
+                    <h5 class="card-title">{{material.setimo_passo}}</h5>
+                    <p class="card-text">{{material.oitavo_passo}}</p><br>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word10.png' %}" alt="">
+                    <h5 class="card-title">{{material.nono_passo}}</h5>
+                    <p class="card-text">{{material.decimo_passo}}</p><br>
+                    <img class="img-fluid" src="{% static 'images/conteudo/word11.png' %}" alt="">
+                  </div>
+                {%endfor %}
+              </div>
+        </div>
+        <!-- End Col -->
+    </div>
+</div>
+{% endblock %}

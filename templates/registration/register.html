@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Registre-se aqui, Professor!{% endblock %}
+{% block content %}
+
+<div class="row" style="margin-top: 5%;">
+    <div class="col-md-4 offset-md-4">
+        <div class="card auth-card" style="min-height: 600px;">
+            <div class="card-body">
+                <h4 class="card-title text-center">Cadastre-se no professores conectados!</h4>
+
+                <form method="POST">
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{next}}">
+    
+                    <div id="div_id_username" class="form-group"> 
+                        <label for="id_username" class=" requiredField">Insira um nome para usuário</label> 
+                        <div> 
+                            <input type="text" name="username" maxlength="150" autocapitalize="none" autocomplete="username" autofocus="" class="textinput textInput form-control" required="" id="id_username">
+                             <small id="hint_id_username" class="form-text text-muted">Requeridos. 150 caracteres ou menos. Apenas letras, dígitos e @/./+/-/_.</small> 
+                        </div> 
+                    </div> 
+                    <div id="div_id_password1" class="form-group"> <label for="id_password1" class=" requiredField">Crie uma senha</label>
+                        <div>
+                            <input type="password" name="password1" autocomplete="new-password" class="textinput textInput form-control" required="" id="id_password1">
+                            <small id="hint_id_password1" class="form-text text-muted">
+                                <ul>
+                                    <li>Sua senha não pode ser muito parecida com suas outras informações pessoais.</li>
+                                    <li>Sua senha deve conter pelo menos 8 caracteres.</li>
+                                    <li>Sua senha não pode ser uma senha comumente usada.</li>
+                                    <li>Sua senha não pode ser totalmente numérica.</li>
+                                </ul>
+                            </small> 
+                        </div> 
+                    </div> 
+                    <div id="div_id_password2" class="form-group"> 
+                        <label for="id_password2" class=" requiredField">Confirme a senha</label> 
+                        <div> 
+                            <input type="password" name="password2" autocomplete="new-password" class="textinput textInput form-control" required="" id="id_password2"> 
+                            <small id="hint_id_password2" class="form-text text-muted">Digite a mesma senha de antes, para verificação.</small> 
+                        </div> 
+                    </div>
+    
+                    <button type="submit" class="btn btn-primary btn-block">Registrar</button>
+                
+                </form>
+                <p class="change-form-p">Já possui uma conta? <a href="/accounts/login"> Clique aqui! </p>
+            </div>
+        </div>
+    </div>  
+</div>
+
+{% endblock %}

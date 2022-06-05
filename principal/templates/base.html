@@ -1,0 +1,179 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Professores Conectados</title>
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="{% static 'images/logoP.jpg' %}">
+    <!-- Pignose Calender -->
+    <link href=" {% static './plugins/pg-calendar/css/pignose.calendar.min.css' %} " rel="stylesheet">
+    <!-- Chartist -->
+    <link rel="stylesheet" href=" {% static './plugins/chartist/css/chartist.min.css' %}">
+    <link rel="stylesheet" href=" {% static './plugins/chartist-plugin-tooltips/css/chartist-plugin-tooltip.css' %}">
+    <!-- Custom Stylesheet -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="loader">
+            <svg class="circular" viewBox="25 25 50 50">
+                <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="3" stroke-miterlimit="10" />
+            </svg>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+    
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light "  style=" background: #fff; transition: all .2s ease; height: 80px; font-family: 'Poppins', sans-serif;">
+          <a class="navbar-brand" href="/" style="font-size: 1.5rem; font-family: 'Poppins', sans-serif;"">
+            <img src="{% static 'images/logoP.jpg'%}" width="50" height="50" style="margin-top: -0.5rem;" class="d-inline-block align-top" alt="">
+            Professores Conectados
+          </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Alterna navegação">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+          <ul class="navbar-nav " style="font-size: 1.2rem; margin-right: 0.5rem;">
+            <li class="nav-item">
+              <a class="nav-link" href="/admin">Adiministrador</a>
+            </li>
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+              <a class="nav-link" href="/accounts/login">Sair</a>
+            </li>
+            {% endif %}
+          </ul>
+        </div>
+      </nav>
+        <!--**********************************
+            Header end ti-comment-alt
+        ***********************************-->
+
+        <!--**********************************
+            Sidebar start
+        ***********************************-->
+        <!--**********************************
+            Sidebar end
+        ***********************************-->
+
+        <!--**********************************
+            Content body start
+        ***********************************-->
+        {% block content %} 
+        
+        {% endblock %}
+            <!-- #/ container -->
+        
+        <!--**********************************
+            Content body end
+        ***********************************-->
+        
+        
+        <!--**********************************
+            Footer start
+        ***********************************-->
+        <!--<div class="footer">
+            <div class="copyright">
+                <p>Copyright &copy; Designed & Developed by <a href="https://themeforest.net/user/quixlab">Quixlab</a> 2018</p>
+            </div>
+        </div>
+        **********************************
+            Footer end
+        ***********************************-->
+        <footer class="bg-light text-center text-white">
+            <!-- Grid container -->
+            <div class="container p-4 pb-0">
+              <!-- Section: Social media -->
+              <section class="mb-4">
+          
+                <!-- Google -->
+                <a
+                  class="btn btn-primary btn-floating m-1"
+                  style="background-color: white;"
+                  href="#!"
+                  role="button"
+                  ><img src="{% static 'images/logoP.jpg'%}" width="50" height="50" style="margin-top: -0.5rem;" class="d-inline-block align-top" alt=""></i
+                ></a>
+                <a
+                class="btn btn-primary btn-floating m-1"
+                style="background-color: white;"
+                href="#!"
+                role="button"
+                ><img src="{% static 'images/logoifbaiano.png'%}" width="50" height="50" style="margin-top: -0.5rem;" class="d-inline-block align-top" alt=""></i
+                ></a>
+                <a class="btn-floating m-1"
+                style="background-color: white; color: black;" 
+                href="#!"
+                role="button">Professores conectados desenvolvido por discentes do Instituto Federal Baiano</a>
+          
+
+              </section>
+              <!-- Section: Social media -->
+            </div>
+            <!-- Grid container -->
+          
+            <!-- Copyright -->
+            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+              © 2022 Copyright:
+              <a class="text-white" href="#">Professores Conectados</a>
+            </div>
+            <!-- Copyright -->
+          </footer>
+    <!--**********************************
+        Main wrapper end
+    ***********************************-->
+
+    <!--**********************************
+        Scripts
+    ***********************************-->
+    <script src=" {% static 'plugins/common/common.min.js' %}"></script>
+    <script src=" {% static 'js/custom.min.js' %}"></script>
+    <script src=" {% static 'js/settings.js' %}"></script>
+    <script src=" {% static 'js/gleek.js'%}"></script>
+    <script src=" {% static 'js/styleSwitcher.js' %}"></script>
+
+    <!-- Chartjs -->
+    <script src=" {% static './plugins/chart.js/Chart.bundle.min.js' %}"></script>
+    <!-- Circle progress -->
+    <script src=" {% static './plugins/circle-progress/circle-progress.min.js' %}"></script>
+    <!-- Datamap -->
+    <script src=" {% static './plugins/d3v3/index.js"></script>
+    <script src=" {% static './plugins/topojson/topojson.min.js' %}"></script>
+    <script src=" {% static './plugins/datamaps/datamaps.world.min.js' %}"></script>
+    <!-- Morrisjs -->
+    <script src=" {% static './plugins/raphael/raphael.min.js' %}"></script>
+    <script src=" {% static './plugins/morris/morris.min.js' %}"></script>
+    <!-- Pignose Calender -->
+    <script src=" {% static './plugins/moment/moment.min.js' %}"></script>
+    <script src=" {% static './plugins/pg-calendar/js/pignose.calendar.min.js' %}"></script>
+    <!-- ChartistJS -->
+    <script src=" {% static './plugins/chartist/js/chartist.min.js' %}"></script>
+    <script src=" {% static './plugins/chartist-plugin-tooltips/js/chartist-plugin-tooltip.min.js' %}"></script>
+    
+    <script src=" {% static 'plugins/common/common.min.js' %}"></script>
+    <script src="{% static 'js/custom.min.js' %}"></script>
+    <script src="{% static 'js/settings.js' %}"></script>
+    <script src="{% static 'js/gleek.js' %}"></script>
+    <script src="{% static 'js/styleSwitcher.js' %}"></script>
+
+    <!--<script src="{% static 'js/controle.js'%}"></script>-->
+    <script src=" {% static './js/dashboard/dashboard-1.js' %}"></script>
+
+</body>
+
+</html>

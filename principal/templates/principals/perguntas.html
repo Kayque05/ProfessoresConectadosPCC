@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+{%load static%}
+
+{%block content%}
+<div class="row" style="margin-top: 4%; margin-left: 18%;">
+    <div class="col-12 m-b-30">
+        <div class="row">
+            <div class="col-md-6 col-lg-9">
+                <div class="card">
+                    <div class="card-header bg-white">
+                        <h2 class="card-title">Tire suas dúvidas a respeito dos cursos presente na plataforma!</h2>
+                        <h5 class="card-subtitle mb-2 text-muted">Através deste FAQ você poderá pesquisar e visualizar o que deseja!</h5>
+                    </div>
+                    <img class="img-fluid" src="images/big/img1.jpg" alt="">
+                    <div class="card-body">
+                        <div class="novo-topico">
+
+                            <div class="search-div">
+                                <h5>Pesquise uma dúvida</h5>
+                                <form method="GET" id="search-form">
+                                    <input class="form-control" type="text" id="search" name="search" placeholder="Pesquisar tópico" value="{{ request.GET.search}}">
+                                </form>
+                            </div>
+                            <div class="col-12 filter-div" style="margin-left: -15px; margin-top: 25px;" >
+                                <h5>Filtrar dúvidas por curso</h5>
+                                <select name="filter" id="filter" class="form-control" style="width: 200px;">
+                                    <option value="">Escolha uma opção</option>
+                                    <option value="Google">Curso Google</option>
+                                    <option value="Microsoft">Curso Microsoft</option>
+                                    <option value="Web">Ferramentas Web</option>
+                                </select>
+                            </div><br>
+                            <a type="button" class="btn btn-primary btn-sm" href="/Perguntas/">Todas Perguntas</a>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Col -->
+            <!-- End Col -->
+            <!-- End Col -->
+        </div>
+    </div>
+</div>
+
+<div class="row" style="margin-left:18%;">
+    <div class="col-12">
+        <h4 class="d-inline">Perguntas Frequentes</h4>
+        <p>Aperte sobre o titulo para visualizar </p>
+        <div class="row">
+            
+            <!-- End Col -->
+            {% for pergunta in perguntas %}
+            <div class="col-md-6 col-lg-9">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="detalhe/{{pergunta.id}}">{{pergunta.title}}</a></h5>
+                        <p class="card-text">{{pergunta.description}}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        <!-- End Col -->
+    </div>
+</div>
+<div class="content-body" style="margin-left: 25%;">
+    <div class="container-fluid">
+        <!-- row -->
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Mudar de página</h4>
+                        <div class="bootstrap-pagination">
+                            <nav>
+                                <ul class="pagination justify-content-center">
+                                    <span class="step-links">
+                                        {% if perguntas.has_previous %}
+                                            <a href="?page={{ perguntas.previous_page_number }}"> <i class="fas fa-arrow-left"></i></a>
+                                        {% endif %}
+                            
+                                     
+                                        <span class="current">
+                                            {{ perguntas.number}} de {{ perguntas.paginator.num_pages}}
+                                        </span>
+                            
+                                        {% if perguntas.has_next %}
+                                        <a href="?page={{ perguntas.next_page_number }}"> <i class="fas fa-arrow-right"></i></a>
+                                        {% endif %}
+                                    </span>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- #/ container -->
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="{% static 'js/controle.js'%}"></script>
+
+
+   
+
+{% endblock %}

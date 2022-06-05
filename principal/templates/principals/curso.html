@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  
+  <!--**********************************
+      Main wrapper start
+  ***********************************-->
+  
+      <!--**********************************
+          Content body start
+      ***********************************-->
+      <div class="content-body">
+
+          <div class="row page-titles mx-0">
+              <div class="col p-md-0">
+                  <ol class="breadcrumb">
+                      <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                      <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                  </ol>
+              </div>
+          </div>
+          <!-- row -->
+          <div class="row" style="margin-left: 5%;">
+            <div class="col-12 m-b-30">
+                <div class="row m-b-30">
+                    <div class="col-lg-3">
+                        <div class="card border-primary">
+                            <div class="card-header"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Professores Conectados</h5>
+                                <p class="card-text">Essa plataforma possibilitará os docentes conhecer as ferramentas tecnológicas usadas em aula, para que esses educadores possam se familiarizar com o uso das novas tecnologias, como as ferramentas disponíveis pelo Google, ferramentas web e Microsoft.</p><br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card border-secondary">
+                            <div class="card-header"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Acesse o FAQ relacionado ao curso e a plataforma</h5>
+                                <p class="card-text">Nosso FAQ é um sistema inteligente onde você irá consutar as dúvidas mais frequentes em relação aos nossos cursos e sobre a plataforma!</p><br>
+                                <a href="/Perguntas/" class="btn btn-primary">Acessar dúvidas frequentes</a>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card border-secondary">
+                            <div class="card-header"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Dúvidas Interativas</h5>
+                                <p class="card-text">Com o dúvidas interativas você poderá criar ou responder tópicos ligados a outros usuários</p><br><br><br>
+                                <a href="/Topico/" class="btn btn-primary">Acessar Dúvidas Interativas</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End Col -->
+            </div>
+        </div>
+            <!-- #/ container -->              
+            
+            <div class="row" style="margin-left: 5%;">
+                  <div class="col-9">
+                      <h3 class="d-inline" style="margin-left: 34%;" >Conteúdos do curso {{curso.nome_curso}}</h3>
+                      <p class="text-muted"  style="margin-left: 40%;">Acesse de forma gratúita e aprenda!</p>
+                      <div class="row">
+                          {% for curso in curso.conteudo_set.all %}
+                          <div class="col-md-6 col-lg-4">
+                              <div class="card">
+                                  <img class="img-fluid" src="{% static 'images/curso-img2.jpg' %}" alt="">
+                                  <div class="card-body">
+                                      <h5 class="card-title">{{curso.nome_conteudo}}</h5>
+                                      <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                  </div>
+                                  <div class="card-footer">
+                                      </p><a href="material/{{curso.id}}" c class="btn btn-primary"><small>Acessar Material</small></a>
+                                  </div>
+                              </div>
+                          </div>
+                          {% endfor %}
+                          <!-- End Col -->
+                        
+                          <!-- End Col -->
+                      </div>
+                  </div>
+              </div>
+          <!-- #/ container -->
+                </div>
+
+
+{% endblock %}

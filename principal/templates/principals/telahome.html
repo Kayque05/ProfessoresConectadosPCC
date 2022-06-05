@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+  
+  <!--**********************************
+      Main wrapper start
+  ***********************************-->
+  
+      <!--**********************************
+          Content body start
+      ***********************************-->
+    
+      
+      <div class="content-body" style="margin-left: 2rem; margin-right: 2rem">
+        <div class="row page-titles mx-0">
+            <div class="col p-md-0">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
+                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                </ol>
+            </div>
+        </div>
+         <div class="card mb-6 col-9" style="margin-left: 12%; margin-top: 15px;">
+            <img class="card-img-top" src="{% static 'images/baner3.png' %}" alt="Imagem de capa do card">
+            <div class="card-body">
+              <h5 class="card-title">Título do card</h5>
+              <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco maior, para demonstração.</p>
+              <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p>
+            </div>
+          </div>
+
+          <!-- row -->
+          <div class="row" style="margin-left: 15%;">
+            <div class="col-12 m-b-30">
+                <h2 class="d-inline">Sobre o Professores Conectados</h2>
+                <p>Aprenda conosco!</p>
+                <div class="row m-b-30">
+                    <div class="col-lg-3">
+                        <div class="card border-primary">
+                            <img class="img-fluid" src="{% static 'images/ferramentas-web.jpg' %}" alt="">
+                            <div class="card-header"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Professores Conectados</h5>
+                                <p class="card-text">Essa plataforma possibilitará os docentes conhecer as ferramentas tecnológicas usadas em aula, para que esses educadores possam se familiarizar com o uso das novas tecnologias, como as ferramentas disponíveis pelo Google, ferramentas web e Microsoft.</p><br>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card border-secondary">
+                            <img class="img-fluid" src="{% static 'images/faq.jpg' %}" alt="">
+                            <div class="card-header"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Acesse o FAQ relacionado ao curso e a plataforma</h5>
+                                <p class="card-text">Nosso FAQ é um sistema inteligente onde você irá consutar as dúvidas mais frequentes em relação aos nossos cursos e sobre a plataforma!</p><br>
+                                <a href="Perguntas/" class="btn btn-primary">Acessar dúvidas frequentes</a>
+                            </div>
+    
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
+                        <div class="card border-secondary">
+                            <img class="img-fluid" src="{% static 'images/duvida-i.jpg' %}" alt="">
+                            <div class="card-header"></div>
+                            <div class="card-body">
+                                <h5 class="card-title">Dúvidas Interativas</h5>
+                                <p class="card-text">Com o dúvidas interativas você poderá criar ou responder tópicos ligados a outros usuários</p><br><br>
+                                <a href="Topico/" class="btn btn-primary">Acessar Dúvidas Interativas</a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <!-- End Col -->
+            </div>
+        </div>
+            <!-- #/ container -->              
+            
+            <div class="row" style="margin-left: 15%;">
+                  <div class="col-9">
+                      <h3 class="d-inline" style="margin-left: 42%;" >Nossos cursos</h3>
+                      <p class="text-muted"  style="margin-left: 40%;">Acesse de forma gratúita e aprenda!</p>
+                      <div class="row">
+                          {% for curso in n_curso %}
+                          <div class="col-md-6 col-lg-4">
+                              <div class="card">
+                                  <img class="img-fluid" src="{% static 'images/971.jpg' %}" alt="">
+                                  <div class="card-body">
+                                      <h5 class="card-title">{{curso.nome_curso}}</h5>
+                                      <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                  </div>
+                                  <div class="card-footer">
+                                      </p><a href="listar/{{curso.id}}" c class="btn btn-primary"><small>Acessar Curso</small></a>
+                                  </div>
+                              </div>
+                          </div>
+                          {% endfor %}
+                          <!-- End Col -->
+                        
+                          <!-- End Col -->
+                      </div>
+                  </div>
+              </div>
+          <!-- #/ container -->
+                </div>
+
+
+{% endblock %}
