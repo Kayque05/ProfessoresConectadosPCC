@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Topicos{% endblock %}
+{% load crispy_forms_tags %}
+{% block content %}
+
+
+<div class="row" style="margin-left: 18%; margin-top: 3%">
+    {% if user.is_superuser%}              
+    <div class="card mb-6 col-3" style=" margin-top: 15px;">
+        <div class="card-body" >
+          <h5 class="card-title" >Configurações do Material</h5>
+        
+            <p >Configure o material aqui</p>
+            <a href="/editarConteudo/{{conteudo.id}}"  class="btn btn-primary"  ><small>Editar Material</small></a>
+          
+        </div>
+      </div>
+    {% endif %}
+    <div class="col-12">
+        <div class="row">
+            <div class="card col-md-6 col-lg-9">
+          
+                <h3 class="card-header">Material de {{conteudo.nome_conteudo}}</h3>
+                
+                <div class="card-body">
+                  <p>Antes de iniciar sua leitura, temos todo conteúdo detalhado em: <a href="{{conteudo.link}}">Tudo sobre o {{conteudo.nome_conteudo}}</a>!</a></p>
+                  <h5 class="card-title">{{conteudo.titulo_introducao}}</h5>
+                  <p>{{conteudo.introducao}}</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{conteudo.titulo_topico1}}</h5>
+                  <p>{{conteudo.topico1}}</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{conteudo.titulo_topico2}}</h5>
+                  <p>{{conteudo.topico2}}</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{conteudo.titulo_topico3}}</h5>
+                  <p>{{conteudo.topico3}}</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{conteudo.titulo_topico4}}</h5>
+                  <p>{{conteudo.topico4}}</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{conteudo.titulo_topico5}}</h5>
+                  <p>{{conteudo.topico5}}</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{conteudo.titulo_topico6}}</h5>
+                  <p>{{conteudo.topico6}}</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{conteudo.titulo_topico7}}</h5>
+                  <p>{{conteudo.topico7}}</p>
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">{{conteudo.titulo_topico8}}</h5>
+                  <p>{{conteudo.topico8}}</p>
+                </div>
+          
+        </div>
+        <!-- End Col -->
+    </div>
+</div>
+</div>
+{% endblock %}

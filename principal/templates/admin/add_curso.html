@@ -1,24 +1,25 @@
 {% extends 'base.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Adicionar Resposta{% endblock %}
+{% block title %}Adicionar novo curso{% endblock %}
 {% block content %}
 
 
+
 <div class="row" style="margin-top: 4%; margin-left: 18%;">
-    <a type="button" class="btn btn-outline-primary" style="margin-bottom: 10px; margin-left: 15px;" href="/topico/">Página Anterior</a>
+    <a type="button" class="btn btn-outline-primary" style="margin-bottom: 10px; margin-left: 15px;" href="/">Página Anterior</a>
     <div class="col-12 m-b-30">
-        <div class="row" >
-            <div class="col-md-6 col-lg-9" style="margin-left: -27px;">
+        <div class="row">
+            <div class="col-md-6 col-lg-9">
                 <div class="card">
                     <div class="card-header bg-white">
-                        <h3 class="card-title" style="font-size: 100%;">Você está respondendo o tópico: {{topico.titulo}}</h3>
+                        <h2 class="card-title" style="font-size: 30px">Você está criando um curso</h2>
                     </div>
                     <img class="img-fluid" src="images/big/img1.jpg" alt="">
                     <div class="card-body">
                         <form method="POST">
                             {% csrf_token %}
                             {{form|crispy}}
-                            <input type="submit" class="btn btn-primary" value="Enviar Resposta">
+                            <input type="submit" class="btn btn-primary" value="Adicionar Curso">
                         </form>
                     </div>
                 </div>

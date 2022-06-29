@@ -11,16 +11,15 @@
           Content body start
       ***********************************-->
       <div class="content-body">
-
+          
           <div class="row page-titles mx-0">
               <div class="col p-md-0">
                   <ol class="breadcrumb">
-                      <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                      <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                      
                   </ol>
               </div>
           </div>
-          <!-- row -->
+          <!-- row --><a type="button" class="btn btn-outline-primary" style="margin-bottom: 10px; margin-left: 15px;" href="/">Página Anterior</a>
           <div class="row" style="margin-left: 5%;">
             <div class="col-12 m-b-30">
                 <div class="row m-b-30">
@@ -40,7 +39,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Acesse o FAQ relacionado ao curso e a plataforma</h5>
                                 <p class="card-text">Nosso FAQ é um sistema inteligente onde você irá consutar as dúvidas mais frequentes em relação aos nossos cursos e sobre a plataforma!</p><br>
-                                <a href="/Perguntas/" class="btn btn-primary">Acessar dúvidas frequentes</a>
+                                <a href="/perguntas/" class="btn btn-primary">Acessar dúvidas frequentes</a>
                             </div>
     
                         </div>
@@ -51,7 +50,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Dúvidas Interativas</h5>
                                 <p class="card-text">Com o dúvidas interativas você poderá criar ou responder tópicos ligados a outros usuários</p><br><br><br>
-                                <a href="/Topico/" class="btn btn-primary">Acessar Dúvidas Interativas</a>
+                                <a href="/topico/" class="btn btn-primary">Acessar Dúvidas Interativas</a>
                             </div>
 
                         </div>
@@ -60,7 +59,18 @@
                 <!-- End Col -->
             </div>
         </div>
-            <!-- #/ container -->              
+            <!-- #/ container -->
+
+            {% if user.is_superuser%}
+                      
+            <div class="card mb-6 col-6" style="margin-left: 17%; margin-top: 15px;">
+                <div class="card-body" style="margin-left: 35%;">
+                  <h5 class="card-title">Adicionar Conteudo</h5>
+                  <p>Crie um novo conteudo aqui</p>
+                  <a href="/add-conteudo/{{curso.id}}" c class="btn btn-primary"><small>Adicionar Conteudo</small></a>
+                </div>
+            </div>
+            {% endif %}
             
             <div class="row" style="margin-left: 5%;">
                   <div class="col-9">
@@ -68,16 +78,23 @@
                       <p class="text-muted"  style="margin-left: 40%;">Acesse de forma gratúita e aprenda!</p>
                       <div class="row">
                           {% for curso in curso.conteudo_set.all %}
-                          <div class="col-md-6 col-lg-4">
+                          <div class="col-md-4 col-lg-5" style="margin-left: 7%;">
                               <div class="card">
                                   <img class="img-fluid" src="{% static 'images/curso-img2.jpg' %}" alt="">
                                   <div class="card-body">
                                       <h5 class="card-title">{{curso.nome_conteudo}}</h5>
-                                      <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                      <p class="card-text">Acesse e aprenda!</p>
                                   </div>
                                   <div class="card-footer">
-                                      </p><a href="material/{{curso.id}}" c class="btn btn-primary"><small>Acessar Material</small></a>
+                                      <a href="conteudo/{{curso.id}}"  class="btn btn-primary" style="margin-left: 1px;"><small>Acessar Conteúdo</small></a>
+                                      {% if user.is_superuser%}
+                                      <a href="/deletarConteudo/{{curso.id}}"  class="btn btn-primary float-right" style="margin-left: 1px;"><small>Deletar Conteúdo</small></a>
+                                      <a href="/editarConteudo/{{curso.id}}" c class="btn btn-primary float-right" ><small>Editar Conteúdo</small></a>
+                                      
+                                      
+                                      {% endif %}
                                   </div>
+                                  
                               </div>
                           </div>
                           {% endfor %}

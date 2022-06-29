@@ -1,7 +1,7 @@
 from django import forms
 from django.shortcuts import render
 from django.urls import reverse
-from .models import Topico
+from .models import Topico, Curso, Conteudo, Perguntas
 from .models import Resposta
 from django.contrib import messages
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
@@ -66,3 +66,24 @@ class Respostas(forms.ModelForm):
             return 0
         else:
             return resposta
+
+class Cursos(forms.ModelForm):
+    
+    class Meta:
+
+        model = Curso
+        fields = ('nome_curso',)
+
+class Conteudos(forms.ModelForm):
+
+    class Meta:
+
+        model = Conteudo
+        fields = ('nome_conteudo','link','titulo_introducao','introducao','titulo_topico1','topico1','titulo_topico2','topico2','titulo_topico3','topico3','titulo_topico4','topico4','titulo_topico5','topico5','titulo_topico6','topico6','titulo_topico7','topico7','titulo_topico8','topico8',)
+
+
+class faq(forms.ModelForm):
+
+    class Meta:
+        model = Perguntas
+        fields = ('title', 'description', 'nome_curso',)

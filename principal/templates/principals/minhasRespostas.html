@@ -4,6 +4,7 @@
 {% block content %}
 
 <div class="row" style="margin-top: 4%; margin-left: 18%;">
+    <a type="button" class="btn btn-outline-primary" style="margin-bottom: 10px; margin-left: 15px;" href="/topico/">Página Anterior</a>
     <div class="col-12 m-b-30">
         <div class="row">
             <div class="col-md-6 col-lg-9">
@@ -19,7 +20,8 @@
                             <div class="search-div">
                                 <h5>Pesquisar Resposta</h5>
                                 <form method="GET" id="search-form">
-                                    <input class="form-control" type="text" id="search" name="search" placeholder="Pesquisar tópico" value="{{ request.GET.search}}">
+                                    <input class="form-control" type="text" id="search" name="search" placeholder="Pesquisar tópico" value="{{ request.GET.search}}"><br>
+                                    <button class="btn btn-primary" id="search-btn">Pesquisar</button>
                                 </form>
                             </div>
                            
@@ -27,12 +29,12 @@
                         <div class="novo-topico">
 
                             <div id="pesquisar">
-                                <a href="/Topico/add-topico" class="btn btn-primary float-left" style="background-color: #1430cd; border-color: #1430cd;">
+                                <a href="/topico/add-topico" class="btn btn-primary float-left" style="background-color: #1430cd; border-color: #1430cd;">
                                         Adicionar um tópico
                                 </a>
                             </div> 
                             <div id="pesquisar">
-                                <a href="/Topico" class="btn btn-primary float-left" style="background-color: #1430cd; margin-left: 7px; border-color: #1430cd;">
+                                <a href="/topico" class="btn btn-primary float-left" style="background-color: #1430cd; margin-left: 7px; border-color: #1430cd;">
                                         Todos topicos
                                 </a>
                             </div>   
@@ -48,8 +50,8 @@
 </div>
 <div class="row" style="margin-left: 18%;">
     <div class="col-12">
-        <h4 class="d-inline">Lista de Tópicos</h4>
-        <p>Visualize ou responda os tópicos presentes nesta lista. Ah! você também pode adicionar um tópico caso esteja com dúvidas.</p>
+        <h4 class="d-inline">Minhas Respostas</h4>
+        <p>Visualize, edite ou apague suas respostas!</p>
         <div class="row">
             
             <div class="col-md-6 col-lg-9" >
@@ -57,7 +59,7 @@
                 {% for resposta in resposta %}
                 <div class="card">
                     <div class="card-body">
-                        <h4 class="card-title"><a href="/Topico/Detalhe/{{topico.id}}" style="color:black;">{{resposta.resposta}}</a></h4>
+                        <h4 class="card-title"><a href="/topico/Detalhe/{{topico.id}}" style="color:black;">{{resposta.resposta}}</a></h4>
                     </div>
                     <div class="card-footer">
                         {% if user.is_authenticated %}
@@ -73,55 +75,5 @@
         <!-- End Col -->
     </div>
 </div>
-<div class="content-body" style="margin-left: 42%;">
-    <div class="container-fluid">
-        <!-- row -->
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Mudar de página</h4>
-                        <div class="bootstrap-pagination">
-                            <nav>
-                                <ul class="pagination justify-content-center">
-                                    <span class="step-links">
-                                        {% if resposta.has_previous %}
-                                            <a href="?page={{ resposta.previous_page_number }}"> <i class="fas fa-arrow-left"></i></a>
-                                        {% endif %}
-                            
-                                     
-                                        <span class="current">
-                                            {{ resposta.number}} de {{ resposta.paginator.num_pages}}
-                                        </span>
-                            
-                                        {% if resposta.has_next %}
-                                        <a href="?page={{ resposta.next_page_number }}"> <i class="fas fa-arrow-right"></i></a>
-                                        {% endif %}
-                                    </span>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- #/ container -->
-</div>
-<div class="pagination">
-    <span class="step-links">
-        {% if comenta.has_previous %}
-            <a href="?page={{ comenta.previous_page_number }}"> <i class="fas fa-arrow-left"></i></a>
-        {% endif %}
 
-    
-        <span class="current">
-            {{ comenta.number}} de {{ comenta.paginator.num_pages}}
-        </span>
-
-        {% if comenta.has_next %}
-        <a href="?page={{ comenta.next_page_number }}"> <i class="fas fa-arrow-right"></i></a>
-        {% endif %}
-    </span>
-</div>
 {% endblock %}

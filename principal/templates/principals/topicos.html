@@ -4,6 +4,7 @@
 {% block content %}
 
 <div class="row" style="margin-top: 4%; margin-left: 18%;">
+    <a type="button" class="btn btn-outline-primary" style="margin-bottom: 10px; margin-left: 15px;" href="/">Página Anterior</a>
     <div class="col-12 m-b-30">
         <div class="row">
             <div class="col-md-6 col-lg-9">
@@ -19,7 +20,8 @@
                             <div class="search-div">
                                 <h5>Pesquisar tópico</h5>
                                 <form method="GET" id="search-form">
-                                    <input class="form-control" type="text" id="search" name="search" placeholder="Pesquisar tópico" value="{{ request.GET.search}}">
+                                    <input class="form-control" type="text" id="search" name="search" placeholder="Pesquisar tópico" value="{{ request.GET.search}}"><br>
+                                    <button class="btn btn-primary" id="search-btn">Pesquisar</button>
                                 </form>
                             </div>
                            
@@ -68,6 +70,7 @@
                         <h4 class="card-title"><a href="Detalhe/{{ comenta.id}}" style="color:black;">{{comenta.titulo}}</a></h4>
                     </div>
                     <div class="card-footer">
+                        <a type="button" class="btn btn-outline-primary" style="margin-bottom: 10px; margin-left: 15px;" href="Detalhe/{{ comenta.id}}">Visualizar Respostas</a>
                         {% if user.is_authenticated %}
                         <a href="add/{{comenta.id}}" class="btn btn-primary float-right ">Responder este comentário</a>
                         {%endif%}
@@ -80,40 +83,6 @@
         <!-- End Col -->
     </div>
 </div>
-<div class="content-body" style="margin-left: 42%;">
-    <div class="container-fluid">
-        <!-- row -->
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Mudar de página</h4>
-                        <div class="bootstrap-pagination">
-                            <nav>
-                                <ul class="pagination justify-content-center">
-                                    <span class="step-links">
-                                        {% if comenta.has_previous %}
-                                            <a href="?page={{ comenta.previous_page_number }}"> <i class="fas fa-arrow-left"></i></a>
-                                        {% endif %}
-                            
-                                     
-                                        <span class="current">
-                                            {{ comenta.number}} de {{ comenta.paginator.num_pages}}
-                                        </span>
-                            
-                                        {% if comenta.has_next %}
-                                        <a href="?page={{ comenta.next_page_number }}"> <i class="fas fa-arrow-right"></i></a>
-                                        {% endif %}
-                                    </span>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- #/ container -->
-</div>
+
 
 {% endblock %}

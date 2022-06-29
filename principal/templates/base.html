@@ -49,9 +49,11 @@
         </button>
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
           <ul class="navbar-nav " style="font-size: 1.2rem; margin-right: 0.5rem;">
+            {% if user.is_superuser %}
             <li class="nav-item">
               <a class="nav-link" href="/admin">Adiministrador</a>
             </li>
+            {% endif %}
             {% if user.is_authenticated %}
             <li class="nav-item">
               <a class="nav-link" href="/accounts/login">Sair</a>
@@ -95,7 +97,7 @@
         **********************************
             Footer end
         ***********************************-->
-        <footer class="bg-light text-center text-white">
+        <footer class="bg-light text-center text-white" style="width: 100%;">
             <!-- Grid container -->
             <div class="container p-4 pb-0">
               <!-- Section: Social media -->

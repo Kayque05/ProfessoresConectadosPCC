@@ -5,12 +5,13 @@
 {% block content %}
 
 <div class="row" style="margin-top: 4%; margin-left: 18%;">
+    <a type="button" class="btn btn-outline-primary" style="margin-bottom: 10px; margin-left: 15px;" href="/topico/">Página Anterior</a>
     <div class="col-12 m-b-30">
         <div class="row">
             <div class="col-md-6 col-lg-9">
                 <div class="card">
                     <div class="card-header bg-white">
-                        <h1 class="card-title" style="font-size: 25px;">Respostas de: {{topico.titulo}} </h1>
+                        <h4 class="card-title">Respostas de: {{topico.titulo}} </h4>
                     </div>
                     <img class="img-fluid" src="images/big/img1.jpg" alt="">
                     </div>
@@ -46,62 +47,5 @@
 </div>
 
 
-<div class="content-body" style="margin-left: 42%;">
-    <div class="container-fluid">
-        <!-- row -->
-        <div class="row">
-            <div class="col-lg-3">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Mudar de página</h4>
-                        <div class="bootstrap-pagination">
-                            <nav>
-                                <ul class="pagination justify-content-center">
-                                    <span class="step-links">
-                                        {% if comenta.has_previous %}
-                                            <a href="?page={{ comenta.previous_page_number }}"> <i class="fas fa-arrow-left"></i></a>
-                                        {% endif %}
-                            
-                                     
-                                        <span class="current">
-                                            {{ comenta.number}} de {{ comenta.paginator.num_pages}}
-                                        </span>
-                            
-                                        {% if comenta.has_next %}
-                                        <a href="?page={{ comenta.next_page_number }}"> <i class="fas fa-arrow-right"></i></a>
-                                        {% endif %}
-                                    </span>
-                                </ul>
-                            </nav>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- #/ container -->
-</div>
-<div class="pagination">
-    <span class="step-links">
-        {% if comenta.has_previous %}
-            <a href="?page={{ comenta.previous_page_number }}"> <i class="fas fa-arrow-left"></i></a>
-        {% endif %}
 
-    
-        <span class="current">
-            {{ comenta.number}} de {{ comenta.paginator.num_pages}}
-        </span>
-
-        {% if comenta.has_next %}
-        <a href="?page={{ comenta.next_page_number }}"> <i class="fas fa-arrow-right"></i></a>
-        {% endif %}
-    </span>
-</div>
 {% endblock %}
-{{topico.titulo}}
-
-<br>
-<br>
-{% for resposta in topico.resposta_set.all%}
-    {{resposta.resposta}}<br><br>
-{% endfor %}

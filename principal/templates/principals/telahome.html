@@ -16,22 +16,16 @@
         <div class="row page-titles mx-0">
             <div class="col p-md-0">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-                    <li class="breadcrumb-item active"><a href="javascript:void(0)">Home</a></li>
+                 
                 </ol>
             </div>
         </div>
          <div class="card mb-6 col-9" style="margin-left: 12%; margin-top: 15px;">
             <img class="card-img-top" src="{% static 'images/baner3.png' %}" alt="Imagem de capa do card">
-            <div class="card-body">
-              <h5 class="card-title">Título do card</h5>
-              <p class="card-text">Este é um card maior com suporte a texto embaixo, que funciona como uma introdução a um conteúdo adicional. Este conteúdo é um pouco maior, para demonstração.</p>
-              <p class="card-text"><small class="text-muted">Atualizados 3 minutos atrás</small></p>
-            </div>
           </div>
 
           <!-- row -->
-          <div class="row" style="margin-left: 15%;">
+          <div class="row" style="margin-left: 17%;">
             <div class="col-12 m-b-30">
                 <h2 class="d-inline">Sobre o Professores Conectados</h2>
                 <p>Aprenda conosco!</p>
@@ -54,7 +48,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Acesse o FAQ relacionado ao curso e a plataforma</h5>
                                 <p class="card-text">Nosso FAQ é um sistema inteligente onde você irá consutar as dúvidas mais frequentes em relação aos nossos cursos e sobre a plataforma!</p><br>
-                                <a href="Perguntas/" class="btn btn-primary">Acessar dúvidas frequentes</a>
+                                <a href="perguntas/" class="btn btn-primary">Acessar dúvidas frequentes</a>
                             </div>
     
                         </div>
@@ -66,7 +60,7 @@
                             <div class="card-body">
                                 <h5 class="card-title">Dúvidas Interativas</h5>
                                 <p class="card-text">Com o dúvidas interativas você poderá criar ou responder tópicos ligados a outros usuários</p><br><br>
-                                <a href="Topico/" class="btn btn-primary">Acessar Dúvidas Interativas</a>
+                                <a href="topico/" class="btn btn-primary">Acessar Dúvidas Interativas</a>
                             </div>
 
                         </div>
@@ -75,8 +69,16 @@
                 <!-- End Col -->
             </div>
         </div>
-            <!-- #/ container -->              
-            
+            <!-- #/ container -->
+            {% if user.is_superuser%}              
+            <div class="card mb-6 col-6" style="margin-left: 23%; margin-top: 15px;">
+                <div class="card-body" style="margin-left: 35%;">
+                  <h5 class="card-title">Adicionar Curso</h5>
+                  <p>Crie um novo curso aqui</p>
+                  <a href="add-curso/" c class="btn btn-primary"><small>Adicionar Curso</small></a>
+                </div>
+              </div>
+            {% endif %}
             <div class="row" style="margin-left: 15%;">
                   <div class="col-9">
                       <h3 class="d-inline" style="margin-left: 42%;" >Nossos cursos</h3>
@@ -88,10 +90,15 @@
                                   <img class="img-fluid" src="{% static 'images/971.jpg' %}" alt="">
                                   <div class="card-body">
                                       <h5 class="card-title">{{curso.nome_curso}}</h5>
-                                      <p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>
+                                      <!--<p class="card-text">This is a wider card with supporting text and below as a natural lead-in to the additional content. This content is a little bit longer.</p>-->
                                   </div>
                                   <div class="card-footer">
-                                      </p><a href="listar/{{curso.id}}" c class="btn btn-primary"><small>Acessar Curso</small></a>
+                                      <a href="listar/{{curso.id}}" c class="btn btn-primary"><small>Acessar Curso</small></a>
+                                      {% if user.is_superuser%}
+                                      <a href="deleteCurso/{{curso.id}}" c class="btn btn-primary float-right" style="margin-left: 5px;"><small>Deletar Curso</small></a>
+                                      <a href="editCurso/{{curso.id}}" c class="btn btn-primary float-right" ><small>Editar Curso</small></a>
+                                      
+                                      {% endif %}
                                   </div>
                               </div>
                           </div>

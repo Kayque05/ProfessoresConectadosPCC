@@ -29,29 +29,28 @@ class Perguntas(models.Model):
 class Conteudo(models.Model):
     curso = models.ForeignKey(Curso, on_delete=models.CASCADE)
     nome_conteudo = models.CharField(max_length=255)
-
+    link = models.CharField(max_length=255)
+    titulo_introducao = models.CharField(max_length=255)
+    introducao = models.TextField()
+    titulo_topico1 = models.CharField(max_length=255)
+    topico1 = models.TextField()
+    titulo_topico2 = models.CharField(max_length=255)
+    topico2 = models.TextField()
+    titulo_topico3 = models.CharField(max_length=255)
+    topico3 = models.TextField()
+    titulo_topico4 = models.CharField(max_length=255)
+    topico4 = models.TextField()
+    titulo_topico5 = models.CharField(max_length=255)
+    topico5 = models.TextField()
+    titulo_topico6 = models.CharField(max_length=255)
+    topico6 = models.TextField()
+    titulo_topico7 = models.CharField(max_length=255)
+    topico7 = models.TextField()
+    titulo_topico8 = models.CharField(max_length=255)
+    topico8 = models.TextField()
     def __str__(self):
         return self.nome_conteudo
 
-class Material(models.Model):
-    conteudo = models.ForeignKey(Conteudo, on_delete=models.CASCADE)
-    titulo_introducao = models.CharField(max_length=255)
-    introducao = models.CharField(max_length=255)
-    primeiro_passo_titulo = models.CharField(max_length=255)
-    primeiro_passo = models.TextField()
-    segundo_passo = models.TextField()
-    terceira_passo = models.TextField()
-    quarto_passo = models.TextField()
-    quinto_passo = models.TextField()
-    sexto_passo = models.TextField()
-    setimo_passo = models.TextField()
-    oitavo_passo = models.TextField()
-    nono_passo = models.TextField()
-    decimo_passo = models.TextField()
-    onze_passo = models.TextField()
-    doze_passo = models.TextField()
-    def __str__(self):
-        return self.titulo_introducao
 class Topico(models.Model):
    
     user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
